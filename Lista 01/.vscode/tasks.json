@@ -1,0 +1,17 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build sort",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g", "sort.cpp", "-o", "sort",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
