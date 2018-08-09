@@ -2,6 +2,7 @@
 #include <iostream>
 #include <ctime>
 #include <cstring>
+#include <stdio.h>
 
 using namespace std;
 
@@ -13,7 +14,9 @@ int* selectionSort(int* x, int n)
 		for (int j = i+1; j < n; j++)
 		{
 			if (x[j] < x[m])
+            {
 				m = j;
+            }
 		}
 		double aux = x[i];
 		x[i] = x[m];
@@ -24,58 +27,45 @@ int* selectionSort(int* x, int n)
 
 void mergeSort(int* x, int n)
 {
-	if (n < 2)
-		return;    
+	if (n < 2) {
+        return;    
+    }
    
-   int m = n/2;
-   for (int i = 0; i < n; ++i)
-      cout << x[i] << " ";
-   cout << endl;
-
+    int m = n/2;
 	mergeSort(x, m);
 	mergeSort(x+m, n-m);
 
-   int i = 0;
-   int j = 0;
 	int* l = new int[m];
-	memcpy(l, x, m);
-	for (int i = 0; i < m; ++i)
-      cout << l[i] << " ";
-   cout << endl;
+	memcpy(l, x, m*sizeof(int));
 
 	int* r = new int[n-m];
-	memcpy(r, &x[m], n-m);
-	for (int i = 0; i < n-m; ++i)
-      cout << r[i] << " ";
-   cout << endl;
+	memcpy(r, &x[m], (n-m)*sizeof(int));
     
-   for (int i = 0; i < n; ++i)
-      cout << x[i] << " ";
-   cout << endl;
-    
-	for (int k = 0; k < n; ++k)
-	{
-		if (l[i] < r[j])
-		{
-			x[k] = l[i];
-         i++;
-         if (i = m)
-         {
-            i--;
-            l[i] = r[n-m];
-         }
-      }
-		else
-		{
-         x[k] = r[j];
-			j++;
-         if (j = n-m)
-         {
-            j--;
-            r[j] = l[m];
-         }
-		}
-	}
+   	int i = 0;
+   	int j = 0;
+    for (int k = 0; k < n; ++k)
+    {
+        if (l[i] < r[j])
+        {
+            x[k] = l[i];
+            i++;
+            if (i == m)
+            {
+                i--;
+                l[i] = r[n-m-1];
+            }
+        }
+        else
+        {
+            x[k] = r[j];
+            j++;
+            if (j == n-m)
+            {
+                j--;
+                r[j] = l[m-1];
+            }
+        }
+    }
 }
 
 void quickSort(int* x, int r, int s)
@@ -109,45 +99,55 @@ void quickSort(int* x, int r, int s)
 
 int main(int argc, char const *argv[])
 {
-	int n;
-	cin >> n;
+	int n = 100000;
 	int* x = new int[n];
-	for (int i = 0; i < n; ++i)
-	{
-		x[i] = rand() % n;
-		cout << x[i] << " ";
-	}
-	cout << endl;
+	// for (int i = 0; i < n; ++i)
+	// {
+	// 	x[i] = rand() % n;
+	// 	// cout << x[i] << " ";
+	// }
+	// cout << endl;
 
-    clock_t begin = clock();
-    //selectionSort(x, n);
-    clock_t end = clock();
+    clock_t begin, end;
+
+    ////////////////////////////////////////////////////////////////////////////
+    // SELECTION SORT
+    ////////////////////////////////////////////////////////////////////////////
+    for (int i = 0; i < n; ++i)
+	    x[i] = rand() % n;
+    begin = clock();
+    selectionSort(x, n);
+    end = clock();
     double timeSelection = double(end - begin) ; // CLOCKS_PER_SEC;
     cout << "Tempo: " << timeSelection << " s" << endl;
-
- 	
+    
+    ////////////////////////////////////////////////////////////////////////////
+    // MERGE SORT
+    ////////////////////////////////////////////////////////////////////////////
+ 	for (int i = 0; i < n; ++i)
+	    x[i] = rand() % n;
     begin = clock();	
  	mergeSort(x, n);
  	end = clock();
    	double timeMerge = double(end - begin); // CLOCKS_PER_SEC;
-    for (int i = 0; i < n; ++i)
-    {
-        cout << x[i] << " ";
-    }
-	cout << endl;
+    cout << "Tempo: " << timeMerge << " s" << endl;
 
+    ////////////////////////////////////////////////////////////////////////////
+    // QUICK SORT
+    ////////////////////////////////////////////////////////////////////////////
     // for (int i = 0; i < n; ++i)
-	// {
-	// 	x[i] = rand() % n;
-	// }
+	//     x[i] = rand() % n;
+
+	// begin = clock();
 	// quickSort(x, 0, n);
 	// end = clock();
-    // double timeQucik = double(end - begin) / CLOCKS_PER_SEC;
-
-
-	// cout << "Tempo: " << timeMerge << " s" << endl;
+    // double timeQucik = double(end - begin); // CLOCKS_PER_SEC;
 	// cout << "Tempo: " << timeQucik << " s" << endl;
 
+    // for (int i = 0; i < n; ++i)
+    //     cout << x[i] << " ";
+	// cout << endl;
+    // system("read");
 	delete x;
 	return 0;
 }
