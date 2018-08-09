@@ -73,28 +73,27 @@ void quickSort(int* x, int r, int s)
 	if (s <= r)
 		return;
 	
-	int v = x[r];
-	int i = r;
-	int j = s+1;
-	do
+	int pivot = x[r];
+	int pivotID = r;
+	
+	for(int i = r+1; i < s; i++)
 	{
-		for (; x[i] >= v; i++);
-		for (; x[j] <= v; j--);
-		double aux = x[i];
-		x[i] = x[j];
-		x[j] = aux;
-	} while (j <= i);
+		if (x[i] < pivot)
+		{
+			int aux = x[pivotID+1];
+			x[pivotID+1] = x[i];
+			x[i] = aux;
 
-	double aux = x[i];
-	x[i] = x[j];
-	x[j] = aux;
+			aux = x[pivotID+1];
+			x[pivotID+1] = pivot;
+			x[pivotID] = aux;
+			
+			pivotID++;
+		}
+	}
 
-	aux = x[i];
-	x[i] = x[s];
-	x[s] = aux;
-
-	quickSort(x, r, i-1);
-	quickSort(x, i+1, s);
+	quickSort(x, r, pivotID);
+	quickSort(x, pivotID+1, s);
 }
 
 int main(int argc, char const *argv[])
@@ -118,7 +117,7 @@ int main(int argc, char const *argv[])
     begin = clock();
     selectionSort(x, n);
     end = clock();
-    double timeSelection = double(end - begin) ; // CLOCKS_PER_SEC;
+    double timeSelection = double(end - begin) / CLOCKS_PER_SEC;
     cout << "Tempo: " << timeSelection << " s" << endl;
     
     ////////////////////////////////////////////////////////////////////////////
@@ -129,20 +128,20 @@ int main(int argc, char const *argv[])
     begin = clock();	
  	mergeSort(x, n);
  	end = clock();
-   	double timeMerge = double(end - begin); // CLOCKS_PER_SEC;
+   	double timeMerge = double(end - begin) / CLOCKS_PER_SEC;
     cout << "Tempo: " << timeMerge << " s" << endl;
 
     ////////////////////////////////////////////////////////////////////////////
     // QUICK SORT
     ////////////////////////////////////////////////////////////////////////////
-    // for (int i = 0; i < n; ++i)
-	//     x[i] = rand() % n;
+    for (int i = 0; i < n; ++i)
+	    x[i] = rand() % n;
 
-	// begin = clock();
-	// quickSort(x, 0, n);
-	// end = clock();
-    // double timeQucik = double(end - begin); // CLOCKS_PER_SEC;
-	// cout << "Tempo: " << timeQucik << " s" << endl;
+	begin = clock();
+	quickSort(x, 0, n);
+	end = clock();
+    double timeQucik = double(end - begin) / CLOCKS_PER_SEC;
+	cout << "Tempo: " << timeQucik << " s" << endl;
 
     // for (int i = 0; i < n; ++i)
     //     cout << x[i] << " ";
@@ -150,4 +149,5 @@ int main(int argc, char const *argv[])
     // system("read");
 	delete x;
 	return 0;
+
 }
