@@ -7,4 +7,3 @@ for N in 10 100 1000 10000; do
     echo $(cat numbers.txt) | tr ' ' '\n' | sort -n > shell.txt
     diff meu.txt shell.txt    
 done
- 

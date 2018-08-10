@@ -3,6 +3,7 @@
 #include <ctime>
 #include <cstring>
 #include <stdio.h>
+#include <cmath>
 
 using namespace std;
 
@@ -112,53 +113,53 @@ void insertionSort(int* x, int n)
 
 int main(int argc, char const *argv[])
 {
-    int n;
-    cin >> n;
-    int* x = new int[n];
-    int* numbers = new int[n];
-    for (int i = 0; i < n; ++i)
-	    cin >> numbers[i];
     
-    clock_t begin, end;
-    double time;
+    for(int N = 0; N < 6; N++)
+    {
+        int n = pow(10, N);
+        cout << endl << "Para " << n << " elementos: " << endl;
+        int* x = new int[n];
+        int* numbers = new int[n];
+        for (int i = 0; i < n; ++i)
+            numbers[i] = rand() % n + 1;
+        
+        clock_t begin, end;
+        double time;
 
-    // SELECTION SORT //////////////////////////////////////////////////////////
-    memcpy(x, numbers, n*sizeof(int));    
-    begin = clock();
-    // selectionSort(x, n);
-    end = clock();
-    time = double(end - begin) / CLOCKS_PER_SEC;
-    // cout << "Selection sort:\t" << time << " s => " << endl;
-    
-    // MERGE SORT //////////////////////////////////////////////////////////////
-    memcpy(x, numbers, n*sizeof(int));
-    begin = clock();	
-    mergeSort(x, n);
-    end = clock();
-    time = double(end - begin) / CLOCKS_PER_SEC;
-    // cout << "Merge sort:\t" << time << " s => " << endl;
+        // SELECTION SORT //////////////////////////////////////////////////////////
+        memcpy(x, numbers, n*sizeof(int));    
+        begin = clock();
+        selectionSort(x, n);
+        end = clock();
+        time = double(end - begin) / CLOCKS_PER_SEC;
+        cout << "Selection sort: " << time << " s" << endl;
+        
+        // MERGE SORT //////////////////////////////////////////////////////////////
+        memcpy(x, numbers, n*sizeof(int));
+        begin = clock();	
+        mergeSort(x, n);
+        end = clock();
+        time = double(end - begin) / CLOCKS_PER_SEC;
+        cout << "Merge sort:     " << time << " s" << endl;
 
-    // QUICK SORT //////////////////////////////////////////////////////////////
-    // memcpy(x, numbers, n*sizeof(int));
-    begin = clock();
-    // quickSort( ;x, 0, n);
-    end = clock();
-    time = double(end - begin) / CLOCKS_PER_SEC;
-    // cout << "Quick sort:\t" << time << " s => " << endl;
+        // QUICK SORT //////////////////////////////////////////////////////////////
+        memcpy(x, numbers, n*sizeof(int));
+        begin = clock();
+        quickSort(x, 0, n);
+        end = clock();
+        time = double(end - begin) / CLOCKS_PER_SEC;
+        cout << "Quick sort:     " << time << " s" << endl;
 
-    // INSERTION SORT ///////////////////////////////////////////////////////////
-    // memcpy(x, numbers, n*sizeof(int));
-    begin = clock();
-    // insertionSort(x, n);
-    end = clock();
-    time = double(end - begin) / CLOCKS_PER_SEC;
-    // cout << "Insection sort:\t" << time << " s => " << endl;
-
-    for (int i = 0; i < n; ++i) 
-        cout << x[i] << endl;
-
-    delete x;
-    
+        // INSERTION SORT ///////////////////////////////////////////////////////////
+        memcpy(x, numbers, n*sizeof(int));
+        begin = clock();
+        insertionSort(x, n);
+        end = clock();
+        time = double(end - begin) / CLOCKS_PER_SEC;
+        cout << "Insection sort: " << time << " s" << endl;
+        
+        delete x;
+    }
     // system("read");
     
     return EXIT_SUCCESS;
