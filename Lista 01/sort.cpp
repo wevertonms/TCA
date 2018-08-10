@@ -6,43 +6,42 @@
 
 using namespace std;
 
-int* selectionSort(int* x, int n)
+void selectionSort(int* x, int n)
 {
-	for(int i = 0; i < n-1; i++)
-	{
-		int m = i;
-		for (int j = i+1; j < n; j++)
-		{
-			if (x[j] < x[m])
+    for(int i = 0; i < n-1; i++)
+    {
+        int m = i;
+        for (int j = i+1; j < n; j++)
+        {
+            if (x[j] < x[m])
             {
-				m = j;
+                m = j;
             }
-		}
-		double aux = x[i];
-		x[i] = x[m];
-		x[m] = aux;
-	}
-	return x;
+        }
+        double aux = x[i];
+        x[i] = x[m];
+        x[m] = aux;
+    }
 }
 
 void mergeSort(int* x, int n)
 {
-	if (n < 2) {
+    if (n < 2) {
         return;    
     }
    
     int m = n/2;
-	mergeSort(x, m);
-	mergeSort(x+m, n-m);
+    mergeSort(x, m);
+    mergeSort(x+m, n-m);
 
-	int* l = new int[m];
-	memcpy(l, x, m*sizeof(int));
+    int* l = new int[m];
+    memcpy(l, x, m*sizeof(int));
 
-	int* r = new int[n-m];
-	memcpy(r, &x[m], (n-m)*sizeof(int));
+    int* r = new int[n-m];
+    memcpy(r, &x[m], (n-m)*sizeof(int));
     
-   	int i = 0;
-   	int j = 0;
+    int i = 0;
+    int j = 0;
     for (int k = 0; k < n; ++k)
     {
         if (l[i] < r[j])
@@ -70,84 +69,97 @@ void mergeSort(int* x, int n)
 
 void quickSort(int* x, int r, int s)
 {
-	if (s <= r)
-		return;
-	
-	int pivot = x[r];
-	int pivotID = r;
-	
-	for(int i = r+1; i < s; i++)
-	{
-		if (x[i] < pivot)
-		{
-			int aux = x[pivotID+1];
-			x[pivotID+1] = x[i];
-			x[i] = aux;
+    if (s <= r)
+        return;
+    
+    int pivot = x[r];
+    int pivotID = r;
+    
+    for(int i = r+1; i < s; i++)
+    {
+        if (x[i] < pivot)
+        {
+            int aux = x[pivotID+1];
+            x[pivotID+1] = x[i];
+            x[i] = aux;
 
-			aux = x[pivotID+1];
-			x[pivotID+1] = pivot;
-			x[pivotID] = aux;
-			
-			pivotID++;
-		}
-	}
+            aux = x[pivotID+1];
+            x[pivotID+1] = pivot;
+            x[pivotID] = aux;
+            
+            pivotID++;
+        }
+    }
 
-	quickSort(x, r, pivotID);
-	quickSort(x, pivotID+1, s);
+    quickSort(x, r, pivotID);
+    quickSort(x, pivotID+1, s);
+}
+
+void insertionSort(int* x, int n)
+{
+    for (int i = 1; i < n; i++)
+    {
+        int v = x[i];
+        int j = i;
+        while (x[j-1] > v && j > 0)
+        {
+            x[j] = x[j-1];
+            j--;
+        }
+        x[j] = v;
+    }
 }
 
 int main(int argc, char const *argv[])
 {
-	int n = 100000;
-	int* x = new int[n];
-	// for (int i = 0; i < n; ++i)
-	// {
-	// 	x[i] = rand() % n;
-	// 	// cout << x[i] << " ";
-	// }
-	// cout << endl;
-
-    clock_t begin, end;
-
-    ////////////////////////////////////////////////////////////////////////////
-    // SELECTION SORT
-    ////////////////////////////////////////////////////////////////////////////
+    int n;
+    cin >> n;
+    int* x = new int[n];
+    int* numbers = new int[n];
     for (int i = 0; i < n; ++i)
-	    x[i] = rand() % n;
-    begin = clock();
-    selectionSort(x, n);
-    end = clock();
-    double timeSelection = double(end - begin) / CLOCKS_PER_SEC;
-    cout << "Tempo: " << timeSelection << " s" << endl;
+	    cin >> numbers[i];
     
-    ////////////////////////////////////////////////////////////////////////////
-    // MERGE SORT
-    ////////////////////////////////////////////////////////////////////////////
- 	for (int i = 0; i < n; ++i)
-	    x[i] = rand() % n;
+    clock_t begin, end;
+    double time;
+
+    // SELECTION SORT //////////////////////////////////////////////////////////
+    memcpy(x, numbers, n*sizeof(int));    
+    begin = clock();
+    // selectionSort(x, n);
+    end = clock();
+    time = double(end - begin) / CLOCKS_PER_SEC;
+    // cout << "Selection sort:\t" << time << " s => " << endl;
+    
+    // MERGE SORT //////////////////////////////////////////////////////////////
+    memcpy(x, numbers, n*sizeof(int));
     begin = clock();	
- 	mergeSort(x, n);
- 	end = clock();
-   	double timeMerge = double(end - begin) / CLOCKS_PER_SEC;
-    cout << "Tempo: " << timeMerge << " s" << endl;
+    mergeSort(x, n);
+    end = clock();
+    time = double(end - begin) / CLOCKS_PER_SEC;
+    // cout << "Merge sort:\t" << time << " s => " << endl;
 
-    ////////////////////////////////////////////////////////////////////////////
-    // QUICK SORT
-    ////////////////////////////////////////////////////////////////////////////
-    for (int i = 0; i < n; ++i)
-	    x[i] = rand() % n;
+    // QUICK SORT //////////////////////////////////////////////////////////////
+    // memcpy(x, numbers, n*sizeof(int));
+    begin = clock();
+    // quickSort( ;x, 0, n);
+    end = clock();
+    time = double(end - begin) / CLOCKS_PER_SEC;
+    // cout << "Quick sort:\t" << time << " s => " << endl;
 
-	begin = clock();
-	quickSort(x, 0, n);
-	end = clock();
-    double timeQucik = double(end - begin) / CLOCKS_PER_SEC;
-	cout << "Tempo: " << timeQucik << " s" << endl;
+    // INSERTION SORT ///////////////////////////////////////////////////////////
+    // memcpy(x, numbers, n*sizeof(int));
+    begin = clock();
+    // insertionSort(x, n);
+    end = clock();
+    time = double(end - begin) / CLOCKS_PER_SEC;
+    // cout << "Insection sort:\t" << time << " s => " << endl;
 
-    // for (int i = 0; i < n; ++i)
-    //     cout << x[i] << " ";
-	// cout << endl;
+    for (int i = 0; i < n; ++i) 
+        cout << x[i] << endl;
+
+    delete x;
+    
     // system("read");
-	delete x;
-	return 0;
-
+    
+    return EXIT_SUCCESS;
 }

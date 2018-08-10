@@ -4,9 +4,7 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/usr/include/c++/8",
-                "/usr/include/c++/8/x86_64-suse-linux",
-                "/usr/include/c++/8/tr1"
+                "/usr/include/c++/8"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/cpp",
