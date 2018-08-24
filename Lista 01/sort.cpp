@@ -110,6 +110,31 @@ void insertionSort(double *x, int n)
 	}
 }
 
+void shellSort(double *x, int n)
+{
+	int i, j, v;
+	int gap = 1;
+	while (gap < n)
+	{
+		gap = 3 * gap + 1;
+	}
+	while (gap > 1)
+	{
+		gap /= 3;
+		for (i = gap; i < n; i++)
+		{
+			v = x[i];
+			j = i;
+			while (j >= gap && v < x[j-gap])
+			{
+				x[j] = x[j - gap];
+				j = j - gap;
+			}
+			x[j] = value;
+		}
+	}
+}
+
 double testSort(int n, char ordering, char alg)
 {
 	clock_t begin, end;
@@ -164,6 +189,12 @@ double testSort(int n, char ordering, char alg)
 		end = clock();
 		time = double(end - begin) / CLOCKS_PER_SEC;
 		break;
+	case 'h':
+		begin = clock();
+		shellSort(x, n);
+		end = clock();
+		time = double(end - begin) / CLOCKS_PER_SEC;
+		break;
 	default:
 		break;
 	}
@@ -185,7 +216,7 @@ int main()
 {
 	cout << "Merge Sort ================================================" << endl;
 	cout << "       N\tAleatório\tCrescente\tDecrescente" << endl;
-	for (int N = 1; N < 7; N++)
+	for (int N = 1; N < 6; N++)
 	{
 		cout << setw(8) << pow(10, N);
 		cout << "\t" << setw(8) << testSort(pow(10, N), 'a', 'm');
@@ -195,7 +226,7 @@ int main()
 
 	cout << "Quick Sort ================================================" << endl;
 	cout << "       N\tAleatório\tCrescente\tDecrescente" << endl;
-	for (int N = 1; N < 7; N++)
+	for (int N = 1; N < 6; N++)
 	{
 		cout << setw(8) << pow(10, N);
 		cout << "\t" << setw(8) << testSort(pow(10, N), 'a', 'q');
@@ -205,7 +236,7 @@ int main()
 
 	cout << "Insertion Sort ============================================" << endl;
 	cout << "       N\tAleatório\tCrescente\tDecrescente" << endl;
-	for (int N = 1; N < 7; N++)
+	for (int N = 1; N < 6; N++)
 	{
 		cout << setw(8) << pow(10, N);
 		cout << "\t" << setw(8) << testSort(pow(10, N), 'a', 'i');
@@ -215,12 +246,22 @@ int main()
 
 	cout << "Selection Sort ============================================" << endl;
 	cout << "       N\tAleatório\tCrescente\tDecrescente" << endl;
-	for (int N = 1; N < 7; N++)
+	for (int N = 1; N < 6; N++)
 	{
 		cout << setw(8) << pow(10, N);
 		cout << "\t" << setw(8) << testSort(pow(10, N), 'a', 's');
 		cout << "\t" << setw(8) << testSort(pow(10, N), 'c', 's');
 		cout << "\t" << setw(8) << testSort(pow(10, N), 'd', 's') << endl;
+	}
+
+	cout << "Shell Sort ================================================" << endl;
+	cout << "       N\tAleatório\tCrescente\tDecrescente" << endl;
+	for (int N = 1; N < 6; N++)
+	{
+		cout << setw(8) << pow(10, N);
+		cout << "\t" << setw(8) << testSort(pow(10, N), 'a', 'h');
+		cout << "\t" << setw(8) << testSort(pow(10, N), 'c', 'h');
+		cout << "\t" << setw(8) << testSort(pow(10, N), 'd', 'h') << endl;
 	}
 
 	return 0;
