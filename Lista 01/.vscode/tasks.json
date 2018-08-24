@@ -6,7 +6,7 @@
             "type": "shell",
             "command": "g++",
             "args": [
-                "-g", "sort.cpp", "-o", "sort",
+                "-g", "-Wall", "sort.cpp", "-o", "sort",
             ],
             "group": {
                 "kind": "build",
