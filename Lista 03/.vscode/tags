@@ -1,0 +1,17 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/94653669/
+direcao	..\\jarvis_FC2D.py	/^    direcao = [p[i][0]-p[i-1][0], p[i][1]-p[i-1][1]]$/;"	kind:variable	line:60
+i	..\\jarvis_FC2D.py	/^    i = i + 1$/;"	kind:variable	line:62
+i	..\\jarvis_FC2D.py	/^i = 1$/;"	kind:variable	line:58
+jarvis_FC2D.py	..\\jarvis_FC2D.py	1;"	kind:file	line:1
+ordenada	..\\jarvis_FC2D.py	/^def ordenada(point):$/;"	kind:function	line:50
+p	..\\jarvis_FC2D.py	/^p = [[1., 0.], [3., 0.], [3., 2.], [1., 2.], [2., 1.]]$/;"	kind:variable	line:53
+pfc	..\\jarvis_FC2D.py	/^pfc = []  # Pontos do fecho convexo$/;"	kind:variable	line:54
+pmin	..\\jarvis_FC2D.py	/^pmin = p.index(min(p, key=ordenada))  # Ponto de menor ordenada$/;"	kind:variable	line:55
+proximoPonto	..\\jarvis_FC2D.py	/^def proximoPonto(p, i, direction):$/;"	kind:function	line:34
+pseudoAngulo	..\\jarvis_FC2D.py	/^def pseudoAngulo(v1, v2):$/;"	kind:function	line:1

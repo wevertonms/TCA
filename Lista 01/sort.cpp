@@ -214,55 +214,55 @@ double testSort(int n, char ordering, char alg)
 
 int main()
 {
-   cout << "Merge Sort ================================================" << endl;
-   cout << "       N\tAleatório\tCrescente\tDecrescente" << endl;
-   for (int N = 1; N < 6; N++)
-   {
-      cout << setw(8) << pow(10, N);
-      cout << "\t" << setw(8) << testSort(pow(10, N), 'a', 'm');
-      cout << "\t" << setw(8) << testSort(pow(10, N), 'c', 'm');
-      cout << "\t" << setw(8) << testSort(pow(10, N), 'd', 'm') << endl;
-   }
+   // cout << "Merge Sort ================================================" << endl;
+   // cout << "       N\tAleatório\tCrescente\tDecrescente" << endl;
+   // for (int N = 1; N < 6; N++)
+   // {
+   //    cout << setw(8) << pow(10, N);
+   //    cout << "\t" << setw(8) << testSort(pow(10, N), 'a', 'm');
+   //    cout << "\t" << setw(8) << testSort(pow(10, N), 'c', 'm');
+   //    cout << "\t" << setw(8) << testSort(pow(10, N), 'd', 'm') << endl;
+   // }
 
-   cout << "Quick Sort ================================================" << endl;
-   cout << "       N\tAleatório\tCrescente\tDecrescente" << endl;
-   for (int N = 1; N < 6; N++)
+   // cout << "Quick Sort ================================================" << endl;
+   // cout << "       N\tAleatório\tCrescente\tDecrescente" << endl;
+   for (int N = 6; N < 7; N++)
    {
-      cout << setw(8) << pow(10, N);
+   //    cout << setw(8) << pow(10, N);
       cout << "\t" << setw(8) << testSort(pow(10, N), 'a', 'q');
-      cout << "\t" << setw(8) << testSort(pow(10, N), 'c', 'q');
-      cout << "\t" << setw(8) << testSort(pow(10, N), 'd', 'q') << endl;
+   //    cout << "\t" << setw(8) << testSort(pow(10, N), 'c', 'q');
+   //    cout << "\t" << setw(8) << testSort(pow(10, N), 'd', 'q') << endl;
    }
 
-   cout << "Insertion Sort ============================================" << endl;
-   cout << "       N\tAleatório\tCrescente\tDecrescente" << endl;
-   for (int N = 1; N < 6; N++)
-   {
-      cout << setw(8) << pow(10, N);
-      cout << "\t" << setw(8) << testSort(pow(10, N), 'a', 'i');
-      cout << "\t" << setw(8) << testSort(pow(10, N), 'c', 'i');
-      cout << "\t" << setw(8) << testSort(pow(10, N), 'd', 'i') << endl;
-   }
+   // cout << "Insertion Sort ============================================" << endl;
+   // cout << "       N\tAleatório\tCrescente\tDecrescente" << endl;
+   // for (int N = 1; N < 6; N++)
+   // {
+   //    cout << setw(8) << pow(10, N);
+   //    cout << "\t" << setw(8) << testSort(pow(10, N), 'a', 'i');
+   //    cout << "\t" << setw(8) << testSort(pow(10, N), 'c', 'i');
+   //    cout << "\t" << setw(8) << testSort(pow(10, N), 'd', 'i') << endl;
+   // }
 
-   cout << "Selection Sort ============================================" << endl;
-   cout << "       N\tAleatório\tCrescente\tDecrescente" << endl;
-   for (int N = 1; N < 6; N++)
-   {
-      cout << setw(8) << pow(10, N);
-      cout << "\t" << setw(8) << testSort(pow(10, N), 'a', 's');
-      cout << "\t" << setw(8) << testSort(pow(10, N), 'c', 's');
-      cout << "\t" << setw(8) << testSort(pow(10, N), 'd', 's') << endl;
-   }
+   // cout << "Selection Sort ============================================" << endl;
+   // cout << "       N\tAleatório\tCrescente\tDecrescente" << endl;
+   // for (int N = 1; N < 6; N++)
+   // {
+   //    cout << setw(8) << pow(10, N);
+   //    cout << "\t" << setw(8) << testSort(pow(10, N), 'a', 's');
+   //    cout << "\t" << setw(8) << testSort(pow(10, N), 'c', 's');
+   //    cout << "\t" << setw(8) << testSort(pow(10, N), 'd', 's') << endl;
+   // }
 
-   cout << "Shell Sort ================================================" << endl;
-   cout << "       N\tAleatório\tCrescente\tDecrescente" << endl;
-   for (int N = 1; N < 6; N++)
-   {
-      cout << setw(8) << pow(10, N);
-      cout << "\t" << setw(8) << testSort(pow(10, N), 'a', 'h');
-      cout << "\t" << setw(8) << testSort(pow(10, N), 'c', 'h');
-      cout << "\t" << setw(8) << testSort(pow(10, N), 'd', 'h') << endl;
-   }
+   // cout << "Shell Sort ================================================" << endl;
+   // cout << "       N\tAleatório\tCrescente\tDecrescente" << endl;
+   // for (int N = 1; N < 6; N++)
+   // {
+   //    cout << setw(8) << pow(10, N);
+   //    cout << "\t" << setw(8) << testSort(pow(10, N), 'a', 'h');
+   //    cout << "\t" << setw(8) << testSort(pow(10, N), 'c', 'h');
+   //    cout << "\t" << setw(8) << testSort(pow(10, N), 'd', 'h') << endl;
+   // }
 
    return 0;
 }
