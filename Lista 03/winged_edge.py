@@ -25,8 +25,8 @@ class edge:
 
 
 class winged_edge:
-   def __init__(self, vextex, faces, edges):
-      self.v = vextex
+   def __init__(self, vertex, faces, edges):
+      self.v = vertex
       self.f = faces
       self.e = edges
 
@@ -69,7 +69,7 @@ class winged_edge:
       return VEXTEX
 
 
-# vextex = [vertex([1, 0, 0], 1),
+# vertex = [vertex([1, 0, 0], 1),
 #          vertex([1, 1, 0], 2),
 #          vertex([1, 1, 1], 3),
 #          vertex([1, 0, 1], 4),
