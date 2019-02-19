@@ -10,14 +10,13 @@
 6. Ordenação usando HPC (pelo menos 2 (dois) algoritmos usando MPI e/ou OpenCL);
 7. Fecho Convexo 2D usando HPC (Sugestão: Jarvis. MPI e/ou OpenCL);
 
-
 ## Informações Gerais
 
-1. Entregar relatório técnico e código computacional. Se necessário, uma apresentação será exigida
-2. Implementação em MATLAB, Python, C ou C++
-  2.1. Se trabalho estiver relacionado à geometria computacional, uso da estrutura de dados Winged-Edge
-  2.2. Se trabalho estiver relacionado à computação de alto desempenho, implementar a versão sequencial para comparação
-3. Tópicos a serem abordados
+- Entregar relatório técnico e código computacional. Se necessário, uma apresentação será exigida
+- Implementação em MATLAB, Python, C ou C++
+  - Se trabalho estiver relacionado à geometria computacional, uso da estrutura de dados Winged-Edge
+  - Se trabalho estiver relacionado à computação de alto desempenho, implementar a versão sequencial para comparação
+- Tópicos a serem abordados
     1. Introdução
     2. Objetivos
     3. Metodologia
